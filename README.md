@@ -45,5 +45,9 @@ Something not playing right? In the app use **Help > Copy diagnostic report** an
 
 Each [release](../../releases) lists what changed. Latest: **1.1.1**: Half-SBS/OU without black bars, diagnostic report and 3D file inspector.
 
+## Support the project
+
+Estereopsis is free. If it saved you time, you can [buy me a coffee](https://buymeacoffee.com/matiasqm98).
+
 ## License
 Free, non-commercial personal project. Bundled tools keep their own licenses.
