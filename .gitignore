@@ -1,0 +1,10 @@
+.build/
+.swiftpm/
+*.dmg
+Estereopsis.app/
+.dmg_staging/
+build.log
+dmg.log
+.DS_Store
+__pycache__/
+ffmpeg-mvc-bin/
