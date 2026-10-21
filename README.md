@@ -17,22 +17,33 @@ Native macOS app that converts 3D Blu-ray (MVC) ISOs and MKVs into **Full Side-b
 
 ## Requirements
 - Apple Silicon, macOS 13+
-- MakeMKV (separate install) only for ripping ISOs/discs; one-time setting to keep the MVC track (see README).
+- MakeMKV (separate install) only for ripping ISOs/discs; one-time setting to keep the 3D (MVC) track: see *MakeMKV setup* below.
 
 ## Bundled
 ffmpeg/ffprobe, MKVToolNix (mkvpropedit, mkvextract) — GPL; [mvcdec](https://github.com/brunoga/mvc) — Apache-2.0. See `Resources/licenses`. MakeMKV is not redistributed.
 
+Source code of the GPL components: [FFmpeg](https://ffmpeg.org/download.html#get-sources), [MKVToolNix](https://mkvtoolnix.download/source.html). The bundled ffmpeg is built with the FFmpeg-mvc patch; open an issue if you want the exact build sources.
+
 ## Install
 Download `Estereopsis-1.1.1.dmg`, drag Estereopsis to Applications. The app is not notarized: first launch via right-click → Open. If macOS still refuses, run `xattr -dr com.apple.quarantine /Applications/Estereopsis.app` in Terminal.
 
-## Build
+## MakeMKV setup (only for ISOs / discs)
+
+By default MakeMKV drops the second 3D view. In MakeMKV > Preferences > Advanced, set the *Default selection rule* to:
+
 ```
-./build_and_run.command   # builds, packages and opens the .app
-./make_dmg.command        # creates Estereopsis-<version>.dmg
+-sel:all,+sel:(favlang|nolang),+sel:mvcvideo,=100:all,-10:favlang
 ```
 
+Estereopsis warns you in orange if an extracted file is missing the MVC track. Already extracted 3D MKVs don't need MakeMKV.
+
+## Support
+
+Something not playing right? In the app use **Help > Copy diagnostic report** and, for a finished file, **Help > Inspect 3D file...** (checks the 3D flag, SBS/OU, Full/Half, black bars and tracks), then open an issue and paste the result.
+
 ## Release notes
-See [RELEASE_NOTES.md](RELEASE_NOTES.md).
+
+Each [release](../../releases) lists what changed. Latest: **1.1.1**: Half-SBS/OU without black bars, diagnostic report and 3D file inspector.
 
 ## License
 Free, non-commercial personal project. Bundled tools keep their own licenses.
